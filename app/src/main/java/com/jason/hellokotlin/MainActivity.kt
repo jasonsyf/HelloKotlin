@@ -1,10 +1,15 @@
 package com.jason.hellokotlin
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.MotionEvent
+import android.widget.Switch
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.reflect.Modifier
 
 class MainActivity : AppCompatActivity() {
     private val items = listOf(
@@ -21,15 +26,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initData()
+
     }
 
     private fun initData() {
+        val url = ""
         forecast_list.layoutManager = LinearLayoutManager(this)
         forecast_list.adapter = ForecastListAdapter(items)
-    }
 
-    fun toast(message:String,length:Int=Toast.LENGTH_SHORT) {
-        Toast.makeText(this, message, length).show()
+    }
+    fun Context.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+        Toast.makeText(this, message, duration).show()
 
     }
 }
